@@ -519,7 +519,7 @@ class _QuickActions extends StatelessWidget {
   Widget build(BuildContext context) {
     return SectionCard(
       title: 'Accesos rápidos',
-      subtitle: 'Operaciones frecuentes de la demostración',
+      subtitle: 'Operaciones frecuentes',
       child: Column(
         children: [
           Row(
@@ -667,12 +667,12 @@ class _ModeIndicator extends StatelessWidget {
             width: 38,
             height: 38,
             decoration: BoxDecoration(
-              color: AppColors.warningSoft,
+              color: AppColors.successSoft,
               borderRadius: BorderRadius.circular(11),
             ),
             child: const Icon(
-              Icons.cloud_off_rounded,
-              color: AppColors.warning,
+              Icons.cloud_done_rounded,
+              color: AppColors.success,
               size: 20,
             ),
           ),
@@ -682,12 +682,12 @@ class _ModeIndicator extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Modo demostración sin conexión',
+                  'Conectado al servidor',
                   style: Theme.of(context).textTheme.titleSmall
                       ?.copyWith(fontSize: 12.5),
                 ),
                 Text(
-                  'Fuente RFID simulada · Sin backend · Datos locales',
+                  'FastAPI + Supabase · Datos reales',
                   style: Theme.of(context).textTheme.bodySmall
                       ?.copyWith(fontSize: 10.8),
                 ),
@@ -695,8 +695,8 @@ class _ModeIndicator extends StatelessWidget {
             ),
           ),
           const StatusPill(
-            label: 'SIMULADO',
-            color: AppColors.warning,
+            label: 'EN LÍNEA',
+            color: AppColors.success,
             compact: true,
           ),
         ],

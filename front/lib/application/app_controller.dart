@@ -108,7 +108,8 @@ class AppController extends AsyncNotifier<AppState> {
       await repository.save(loaded);
       return loaded;
     } on ApiException catch (error) {
-      if (cached != null) {
+      final authError = error.statusCode == 401 || error.statusCode == 403;
+      if (!authError && cached != null) {
         _alerts.rebuild(cached);
         return cached;
       }

@@ -86,9 +86,8 @@ class AboutScreen extends StatelessWidget {
                         icon: Icons.inventory_2_rounded,
                         title: 'Inventario y búsqueda',
                         description:
-                            '50 balones de oxígeno de demostración con código, '
-                            'EPC, categoría, estado, ubicación y situación '
-                            'administrativa separadas.',
+                            'Activos con código, EPC, categoría, estado, '
+                            'ubicación y situación administrativa separadas.',
                       ),
                       _FeatureRow(
                         icon: Icons.settings_input_antenna_rounded,

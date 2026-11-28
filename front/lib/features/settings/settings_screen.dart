@@ -246,10 +246,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   ),
                   const SizedBox(height: 14),
                   SectionCard(
-                    title: 'Datos de demostración',
+                    title: 'Caché local',
                     subtitle:
-                        'Restablece el conjunto inicial de 50 balones y sus '
-                        'movimientos',
+                        'Borra la copia local del dispositivo y vuelve a cargar '
+                        'los datos desde el servidor.',
                     child: OutlinedButton.icon(
                       onPressed: _saving ? null : _resetDemo,
                       style: OutlinedButton.styleFrom(
@@ -257,7 +257,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                         side: const BorderSide(color: AppColors.dangerSoft),
                       ),
                       icon: const Icon(Icons.restart_alt_rounded),
-                      label: const Text('Restablecer demostración'),
+                      label: const Text('Limpiar caché y recargar'),
                     ),
                   ),
                   const SizedBox(height: 14),
@@ -277,13 +277,13 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                         ),
                         InfoRow(
                           label: 'Persistencia',
-                          value: 'Local, sin backend',
+                          value: 'Servidor + caché local',
                           icon: Icons.storage_rounded,
                         ),
                         InfoRow(
                           label: 'Modo',
-                          value: 'Demostración con datos simulados',
-                          icon: Icons.science_outlined,
+                          value: 'Datos reales del servidor',
+                          icon: Icons.cloud_done_outlined,
                         ),
                       ],
                     ),
@@ -345,12 +345,12 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   Future<void> _resetDemo() async {
     final confirmed = await confirmAction(
       context,
-      title: 'Restablecer demostración',
+      title: 'Limpiar caché y recargar',
       message:
-          'Se perderán todos los cambios locales, incluidos activos, '
-          'movimientos, préstamos y operaciones. Se restaurará el conjunto '
-          'inicial de demostración. Esta acción no se puede deshacer.',
-      confirmLabel: 'Restablecer todo',
+          'Se borrará la copia local de activos, movimientos, préstamos y '
+          'operaciones. Los datos se volverán a descargar del servidor. '
+          'Esta acción no se puede deshacer.',
+      confirmLabel: 'Limpiar y recargar',
       destructive: true,
     );
     if (!confirmed || !mounted) return;

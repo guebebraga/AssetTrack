@@ -177,9 +177,8 @@ class _AlertsScreenState extends ConsumerState<AlertsScreen> {
                       const SizedBox(width: 9),
                       Expanded(
                         child: Text(
-                          'Todas las alertas de esta demostración son '
-                          'simuladas y se calculan a partir de los datos '
-                          'locales. Los umbrales se configuran en Ajustes.',
+                          'Las alertas se calculan a partir de los datos '
+                          'del servidor. Los umbrales se configuran en Ajustes.',
                           style: Theme.of(context).textTheme.bodySmall
                               ?.copyWith(fontSize: 11, color: AppColors.navy),
                         ),

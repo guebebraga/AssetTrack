@@ -395,7 +395,7 @@ class _RfidSimulatorScreenState extends ConsumerState<RfidSimulatorScreen> {
                 OutlinedButton.icon(
                   onPressed: _busy ? null : _resetDemo,
                   icon: const Icon(Icons.restart_alt_rounded),
-                  label: const Text('Restablecer datos de demostración'),
+                  label: const Text('Limpiar caché y recargar'),
                 ),
               ],
             ),
@@ -728,11 +728,11 @@ class _RfidSimulatorScreenState extends ConsumerState<RfidSimulatorScreen> {
   Future<void> _resetDemo() async {
     final confirmed = await confirmAction(
       context,
-      title: 'Restablecer demostración',
+      title: 'Limpiar caché y recargar',
       message:
-          'Se eliminarán todos los cambios locales y se restaurará el '
-          'conjunto inicial de 50 activos. Esta acción no se puede deshacer.',
-      confirmLabel: 'Restablecer',
+          'Se borrará la copia local y se recargarán los datos desde el '
+          'servidor. Esta acción no se puede deshacer.',
+      confirmLabel: 'Limpiar y recargar',
       destructive: true,
     );
     if (!confirmed || !mounted) return;
@@ -805,7 +805,7 @@ class _SourceCard extends StatelessWidget {
             compact: true,
           ),
           IconButton(
-            tooltip: 'Restablecer demostración',
+            tooltip: 'Limpiar caché y recargar',
             onPressed: () => onReset(),
             icon: const Icon(
               Icons.restart_alt_rounded,
