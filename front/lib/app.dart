@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -13,31 +13,31 @@ class AssetTrackApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final auth = ref.watch(authControllerProvider);
-    return auth.when(
-      loading: () =>
-          const Scaffold(body: Center(child: CircularProgressIndicator())),
-      error: (error, stack) => Scaffold(
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(24),
-            child: Text('No se pudo cargar la sesión: $error'),
+    return MaterialApp(
+      title: 'AssetTrack',
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.light(),
+      darkTheme: AppTheme.dark(),
+      themeMode: ThemeMode.system,
+      locale: const Locale('es', 'AR'),
+      supportedLocales: const [Locale('es', 'AR'), Locale('es')],
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
+      home: auth.when(
+        loading: () =>
+            const Scaffold(body: Center(child: CircularProgressIndicator())),
+        error: (error, stack) => Scaffold(
+          body: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Text('No se pudo cargar la sesión: $error'),
+            ),
           ),
         ),
+        data: (session) {
+          if (session == null) return const LoginScreen();
+          return const AppShell();
+        },
       ),
-      data: (session) {
-        if (session == null) return const LoginScreen();
-        return MaterialApp(
-          title: 'AssetTrack',
-          debugShowCheckedModeBanner: false,
-          theme: AppTheme.light(),
-          darkTheme: AppTheme.dark(),
-          themeMode: ThemeMode.system,
-          locale: const Locale('es', 'AR'),
-          supportedLocales: const [Locale('es', 'AR'), Locale('es')],
-          localizationsDelegates: GlobalMaterialLocalizations.delegates,
-          home: const AppShell(),
-        );
-      },
     );
   }
 }
